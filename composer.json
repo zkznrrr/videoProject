@@ -1,0 +1,76 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.3.*",
+        "pda/pheanstalk": "^3.1",
+        "predis/predis" : "1.0.3",
+        "zizaco/entrust": "5.2.x-dev",
+        "intervention/image": "2.3.7",
+        "doctrine/dbal": "^2.5",
+        "gregwar/captcha":"1.*",
+        "barryvdh/laravel-debugbar": "^2.0",
+        "laravel/passport": "^1.0",
+        "lcobucci/jwt": "^3.2",
+        "overtrue/laravel-wechat": "~3.0",
+        "phpoffice/phpexcel": "1.8.*",
+        "maatwebsite/excel": "2.1.10"
+    },
+    "require-dev": {
+        "symfony/dom-crawler": "~3.0",
+        "symfony/css-selector": "~3.0",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "codeception/codeception": "*",
+        "squizlabs/php_codesniffer": "~2.5",
+        "block8/php-docblock-checker": "^1.0",
+        "phpspec/phpspec": "~2.1",
+        "flow/jsonpath": "^0.3.4"
+    },
+    "autoload": {
+        "classmap": [
+            "database",
+            "app/Libs/nusoaplib"
+        ],
+        "files": [
+            "app/Helpers/Helpers.php"
+        ],
+        "psr-4": {
+            "Ottcn\\Newuc\\": "app/"
+        }
+    },
+    "autoload-dev": {
+       "psr-4": {
+            "Ottcn\\Newuc\\Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
